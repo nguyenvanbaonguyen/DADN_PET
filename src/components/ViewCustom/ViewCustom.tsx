@@ -8,6 +8,8 @@ const ViewCustom = ({
   round,
   style,
   shadow,
+  overflow,
+  absolute,
   ...props
 }: any) => {
   // Todo:
@@ -20,6 +22,10 @@ const ViewCustom = ({
   if (shadow)
     shadowStyle =
       Platform.OS === 'ios' ? styles.shadowIos : styles.shadowAndroid;
+
+  if (absolute) layoutStyle.position = 'absolute';
+
+  layoutStyle.overflow = overflow ? 'visible' : 'hidden';
 
   // UI
   return (

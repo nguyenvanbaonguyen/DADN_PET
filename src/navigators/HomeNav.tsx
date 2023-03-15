@@ -4,7 +4,9 @@ import AddDevice from '~/screens/AddDevice/AddDevice';
 import Device from '~/screens/Device/Device';
 import DeviceRecord from '~/screens/DeviceRecord/DeviceRecord';
 import DeviceSettings from '~/screens/DeviceSettings/DeviceSettings';
+import FeedTimer from '~/screens/FeedTimer/FeedTimer';
 import Home from '~/screens/Home/Home';
+import Stat from '~/screens/Stat/Stat';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +28,11 @@ const HomeNav = () => {
       <Stack.Screen name="Device" component={Device} />
       <Stack.Screen name="DeviceRecord" component={DeviceRecord} />
       <Stack.Screen name="DeviceSettings" component={DeviceSettings} />
+      <Stack.Screen
+        name="Stat"
+        component={Stat}
+        options={{title: 'Thống kê'}}
+      />
     </Stack.Navigator>
   );
 };

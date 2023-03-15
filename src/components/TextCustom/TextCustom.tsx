@@ -10,14 +10,16 @@ const TextCustom = ({type, children, style, underline, ...props}: any) => {
   if (underline) textStyle.textDecorationLine = 'underline';
 
   return (
-    <Text style={[textStyle, style]} {...props}>
+    <Text style={[styles.text, textStyle, style]} {...props}>
       {children}
     </Text>
   );
 };
 
 const styles = StyleSheet.create({
-  text: {},
+  text: {
+    color: 'black',
+  },
 });
 
 export default TextCustom;

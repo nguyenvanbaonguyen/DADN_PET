@@ -14,7 +14,7 @@ import {NavigatorProps} from '~/navigators/navigator';
 import WhatWeDo from './Components/WhatWeDo';
 
 const Introduce = ({navigation}: NavigatorProps) => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useLayoutEffect(() => {
     const navigateToScreen = async () => {

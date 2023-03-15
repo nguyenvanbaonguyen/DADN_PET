@@ -20,6 +20,7 @@ const keys = {
   py: 'paddingVertical',
   bg: 'backgroundColor',
   fd: 'flexDirection',
+  br: 'borderRadius',
 };
 const values = {
   primary: '#DEF0FC',
