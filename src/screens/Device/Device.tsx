@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, View} from 'react-native';
 import {navigate} from '~/navigators/globalNav';
 import {timers} from '../Home/dataInHome';
+import Icon from 'react-native-vector-icons/AntDesign';
 import Grid from '~/components/Grid/Grid';
 import TextCustom from '~/components/TextCustom/TextCustom';
 import ViewCustom from '~/components/ViewCustom/ViewCustom';
@@ -51,6 +52,7 @@ const Device = ({navigation}) => {
       <ViewCustom layout="mx-5 p-15">
         <ButtonCustom
           size="xs"
+          iconLeft="plus"
           content="Add Timer"
           layout="mt-15"
           onPress={() => navigation.navigate('FeedTimer')}
