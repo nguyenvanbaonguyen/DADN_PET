@@ -28,6 +28,7 @@ const HomeNav = () => {
       <Stack.Screen name="Device" component={Device} />
       <Stack.Screen name="DeviceRecord" component={DeviceRecord} />
       <Stack.Screen name="DeviceSettings" component={DeviceSettings} />
+      <Stack.Screen name="FeedTimer" component={FeedTimer} />
       <Stack.Screen
         name="Stat"
         component={Stat}

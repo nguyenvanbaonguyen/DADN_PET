@@ -33,3 +33,27 @@ export const devicesSmall = [
     image: 'petDispenserSmall',
   },
 ];
+
+export const timers = [
+  {
+    index: 1,
+    hour: '08',
+    minute: '00',
+    repeat: 'Every Mon, Tues, Wed',
+    feed: 3,
+  },
+  {
+    index: 2,
+    hour: '12',
+    minute: '20',
+    repeat: 'Everyday',
+    feed: 2,
+  },
+  {
+    index: 3,
+    hour: '19',
+    minute: '00',
+    repeat: 'Sun, Mar 2',
+    feed: 5,
+  },
+];
