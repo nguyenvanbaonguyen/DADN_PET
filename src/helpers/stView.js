@@ -21,6 +21,8 @@ const keys = {
   bg: 'backgroundColor',
   fd: 'flexDirection',
   br: 'borderRadius',
+  l: 'left',
+  t: 'top',
 };
 const values = {
   primary: '#DEF0FC',
