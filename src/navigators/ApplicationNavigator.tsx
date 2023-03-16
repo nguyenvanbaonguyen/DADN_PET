@@ -5,7 +5,7 @@ import Introduce from '~/screens/Introduce/Introduce';
 import AuthNav from './AuthNav';
 import {navigationRef} from './globalNav';
 import MainNav from './MainNav';
-import Notification from '~/screens/Notification/Notification';
+import Notification from '~/screens/Notification/Notifications';
 
 const Stack = createNativeStackNavigator();
 

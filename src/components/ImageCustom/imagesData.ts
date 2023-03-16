@@ -13,4 +13,7 @@ export const IMAGES = {
   petCleanerBig: require(`${baseUrl}/petCleanerBig.png`),
   petFeederBig: require(`${baseUrl}/petFeederBig.png`),
   petDispenserBig: require(`${baseUrl}/petDispenserBig.png`),
+  petCleanerSmall: require(`${baseUrl}/petCleanerSmall.png`),
+  petFeederSmall: require(`${baseUrl}/petFeederSmall.png`),
+  petDispenserSmall: require(`${baseUrl}/petDispenserSmall.png`),
 };

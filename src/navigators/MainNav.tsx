@@ -13,6 +13,10 @@ import SettingUser from '~/screens/SettingUser/SettingUser';
 import ReportAboutPet from '~/screens/ReportAboutPet/ReportAboutPet';
 import HistoryUser from '~/screens/HistoryUser/HistoryUser';
 import Account from '~/screens/Account/Account';
+import {Text} from 'react-native-svg';
+import useBts from '~/hooks/useBottomSheet';
+import BottomSheet from '~/components/BottomSheet/BottomModal';
+import Notifications from '~/screens/Notification/Notifications';
 
 const Drawer = createDrawerNavigator();
 
@@ -27,27 +31,32 @@ function CustomDrawerContent(props: any) {
 
 function MainNav() {
   const insets = useSafeAreaInsets();
+  const {presentBts, BottomSheet: Sheet} = useBts(BottomSheet);
   return (
-    <Drawer.Navigator
-      screenOptions={{
-        drawerPosition: 'right',
-        header: Header,
-        sceneContainerStyle: {
-          backgroundColor: '#ffffff',
-          paddingTop: insets.top - 10,
-        },
-      }}
-      drawerContent={props => <CustomDrawerContent {...props} />}>
-      <Drawer.Screen
-        name="HomeNav"
-        component={HomeNav}
-        options={{title: 'Home'}}
-      />
-      <Drawer.Screen name="Account" component={Account} />
-      <Drawer.Screen name="Report" component={ReportAboutPet} />
-      <Drawer.Screen name="History" component={HistoryUser} />
-      <Drawer.Screen name="Settings" component={SettingUser} />
-    </Drawer.Navigator>
+    <>
+      <Drawer.Navigator
+        screenOptions={{
+          drawerPosition: 'right',
+          header: Header(presentBts),
+          sceneContainerStyle: {
+            backgroundColor: '#ffffff',
+            paddingTop: insets.top - 10,
+          },
+        }}
+        drawerContent={props => <CustomDrawerContent {...props} />}>
+        <Drawer.Screen
+          name="HomeNav"
+          component={HomeNav}
+          options={{title: 'Home'}}
+        />
+        <Drawer.Screen name="Account" component={Account} />
+        <Drawer.Screen name="Report" component={ReportAboutPet} />
+        <Drawer.Screen name="History" component={HistoryUser} />
+      </Drawer.Navigator>
+      <Sheet>
+        <Notifications />
+      </Sheet>
+    </>
   );
 }
 

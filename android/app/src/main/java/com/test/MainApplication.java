@@ -1,4 +1,7 @@
+
 package com.test;
+
+import com.BV.LinearGradient.LinearGradientPackage;
 
 import android.app.Application;
 import com.facebook.react.PackageList;
@@ -18,6 +21,14 @@ public class MainApplication extends Application implements ReactApplication {
         public boolean getUseDeveloperSupport() {
           return BuildConfig.DEBUG;
         }
+  
+        // @Override
+        // protected List<ReactPackage> getPackages() {
+        //   return Arrays.<ReactPackage>asList(
+        //     new MainReactPackage(),
+        //     new LinearGradientPackage() // <---- and This!
+        //   );
+        // }
 
         @Override
         protected List<ReactPackage> getPackages() {
@@ -25,6 +36,7 @@ public class MainApplication extends Application implements ReactApplication {
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
+          packages.add(new LinearGradientPackage());
           return packages;
         }
 

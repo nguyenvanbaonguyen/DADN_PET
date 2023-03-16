@@ -15,11 +15,11 @@ const Grid = ({
 
   const Column = useCallback(
     ({index}: any) => (
-      <View style={[styles.col, {marginLeft: index && gapX}]}>
-        <RenderItem item={data[index]} />
+      <View style={[styles.col, {marginLeft: index % numColumns && gapX}]}>
+        <RenderItem item={data[index]} index={index} />
       </View>
     ),
-    [RenderItem, data, gapX],
+    [RenderItem, data, gapX, numColumns],
   );
 
   const Row = useCallback(

@@ -4,6 +4,7 @@ const keys = {
   cl: 'color',
   align: 'textAlign',
   opa: 'opacity',
+  lh: 'lineHeight',
 };
 
 const values = {
