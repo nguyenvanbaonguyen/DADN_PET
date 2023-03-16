@@ -52,7 +52,6 @@ function MainNav() {
         <Drawer.Screen name="Account" component={Account} />
         <Drawer.Screen name="Report" component={ReportAboutPet} />
         <Drawer.Screen name="History" component={HistoryUser} />
-        <Drawer.Screen name="Settings" component={SettingUser} />
       </Drawer.Navigator>
       <Sheet>
         <Notifications />
