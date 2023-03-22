@@ -50,12 +50,26 @@ const convertToRealStyle = rawLayout => {
 const stView = stringStyles => {
   if (!stringStyles) return {};
 
-  const realStyle = stringStyles.split(' ').reduce((pre, rawLayout) => {
-    const [typeGutter, value] = convertToRealStyle(rawLayout);
-    return {...pre, [typeGutter]: value};
-  }, {});
+  const realStyle = stringStyles
+    .split(' ')
+    .filter(item => item !== '')
+    .reduce((pre, rawLayout) => {
+      const [typeGutter, value] = convertToRealStyle(rawLayout);
+      return {...pre, [typeGutter]: value};
+    }, {});
 
   return realStyle;
+};
+export const ifLayout = arrLayout => {
+  if (arrLayout.length === 0) return '';
+  const stringLayout = arrLayout
+    .map(arg => {
+      if (arg.length === 3) return arg[0] ? arg[1] : arg[2];
+      if (arg.length === 2) return arg[0] ? arg[1] : '';
+      return '';
+    })
+    .join(' ');
+  return stringLayout;
 };
 
 export default stView;

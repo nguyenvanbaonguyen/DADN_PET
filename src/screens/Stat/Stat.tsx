@@ -8,6 +8,7 @@ import ViewCustom from '~/components/ViewCustom/ViewCustom';
 import General from './General';
 
 const Stat = () => {
+  const data = ['Day', 'Week', 'Month'];
   return (
     <ScrollView>
       <ViewCustom layout="px-15 py-30">
@@ -16,7 +17,7 @@ const Stat = () => {
         <ViewCustom layout="p-15 mt-15 bg-w br-6" shadow>
           <TextCustom type="fs-18 fw-bold">Cleaning Report</TextCustom>
           <ViewCustom layout="mt-15">
-            <ButtonMulti />
+            <ButtonMulti data={data} />
             <ViewCustom layout="mt-15" style={{marginLeft: -15}}>
               <Chart />
             </ViewCustom>
@@ -42,7 +43,7 @@ const Stat = () => {
         <ViewCustom layout="p-15 mt-15 bg-w br-6" shadow>
           <TextCustom type="fs-18 fw-bold">Feeding Report</TextCustom>
           <ViewCustom layout="mt-15">
-            <ButtonMulti />
+            <ButtonMulti data={data} />
             <ViewCustom layout="mt-15" style={{marginLeft: -15}}>
               <Chart />
             </ViewCustom>

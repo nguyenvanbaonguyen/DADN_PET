@@ -13,7 +13,6 @@ import SettingUser from '~/screens/SettingUser/SettingUser';
 import ReportAboutPet from '~/screens/ReportAboutPet/ReportAboutPet';
 import HistoryUser from '~/screens/HistoryUser/HistoryUser';
 import Account from '~/screens/Account/Account';
-import {Text} from 'react-native-svg';
 import useBts from '~/hooks/useBottomSheet';
 import BottomSheet from '~/components/BottomSheet/BottomModal';
 import Notifications from '~/screens/Notification/Notifications';
@@ -50,7 +49,6 @@ function MainNav() {
           options={{title: 'Home'}}
         />
         <Drawer.Screen name="Account" component={Account} />
-        <Drawer.Screen name="Report" component={ReportAboutPet} />
         <Drawer.Screen name="History" component={HistoryUser} />
       </Drawer.Navigator>
       <Sheet>

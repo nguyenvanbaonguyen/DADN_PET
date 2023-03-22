@@ -5,7 +5,9 @@ import Device from '~/screens/Device/Device';
 import DeviceRecord from '~/screens/DeviceRecord/DeviceRecord';
 import DeviceSettings from '~/screens/DeviceSettings/DeviceSettings';
 import FeedTimer from '~/screens/FeedTimer/FeedTimer';
+import HistoryUser from '~/screens/HistoryUser/HistoryUser';
 import Home from '~/screens/Home/Home';
+import Pet from '~/screens/Pet/Pet';
 import Stat from '~/screens/Stat/Stat';
 
 const Stack = createNativeStackNavigator();
@@ -24,11 +26,13 @@ const HomeNav = () => {
         component={Home}
         options={{headerShown: false}}
       />
+      <Stack.Screen name="Pet" component={Pet} />
       <Stack.Screen name="AddDevice" component={AddDevice} />
       <Stack.Screen name="Device" component={Device} />
       <Stack.Screen name="DeviceRecord" component={DeviceRecord} />
       <Stack.Screen name="DeviceSettings" component={DeviceSettings} />
       <Stack.Screen name="FeedTimer" component={FeedTimer} />
+      <Stack.Screen name="PetRecord" component={HistoryUser} />
       <Stack.Screen
         name="Stat"
         component={Stat}

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Platform, StyleSheet, View} from 'react-native';
-import stView from '~/helpers/stView';
+import stView, {ifLayout} from '~/helpers/stView';
 
 const ViewCustom = ({
   children,
@@ -10,9 +10,11 @@ const ViewCustom = ({
   shadow,
   overflow,
   absolute,
+  arrLayout = [],
   ...props
 }: any) => {
   // Todo:
+  layout = layout + ' ' + ifLayout(arrLayout);
   let layoutStyle = stView(layout);
   let shadowStyle;
 

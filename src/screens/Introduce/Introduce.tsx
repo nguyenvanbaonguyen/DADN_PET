@@ -14,15 +14,16 @@ import {NavigatorProps} from '~/navigators/navigator';
 import WhatWeDo from './Components/WhatWeDo';
 
 const Introduce = ({navigation}: NavigatorProps) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useLayoutEffect(() => {
     const navigateToScreen = async () => {
       const isLaunched = await IS_LAUNCHED.get();
       if (isLaunched) {
-        resetNavigate('MainNav');
+        resetNavigate('AuthNav');
         setIsLoading(false);
       }
+      setIsLoading(false);
     };
 
     navigateToScreen();

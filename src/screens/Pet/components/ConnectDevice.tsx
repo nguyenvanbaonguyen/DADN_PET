@@ -23,7 +23,7 @@ const ConnectDevice = () => {
   return (
     <>
       <ViewCustom layout="fd-r jc-b my-15 ai-c">
-        <TextCustom type="fs-20 fw-bold">Chào Châu!</TextCustom>
+        <TextCustom type="fs-20 fw-bold">Mỹ Diệu!</TextCustom>
         <TouchableOpacity
           activeOpacity={0.75}
           onPress={() => navigate('AddDevice')}>

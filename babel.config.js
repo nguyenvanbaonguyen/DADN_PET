@@ -10,8 +10,10 @@ module.exports = {
     [
       'module-resolver',
       {
+        root: ['./'],
         alias: {
           '~': './src',
+          assets: './src/assets',
         },
       },
     ],

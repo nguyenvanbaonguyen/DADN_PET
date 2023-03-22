@@ -1,14 +1,16 @@
 import React from 'react';
 import {Button, View} from 'react-native';
 import {navigate} from '~/navigators/globalNav';
-import {timers} from '../Home/dataInHome';
+import {timers} from '../Pet/dataInHome';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Grid from '~/components/Grid/Grid';
 import TextCustom from '~/components/TextCustom/TextCustom';
 import ViewCustom from '~/components/ViewCustom/ViewCustom';
 import ButtonToggle from '~/components/ButtonCustom/ButtonToggle';
 import ButtonCustom from '~/components/ButtonCustom/ButtonCustom';
-import {NavigatorProps} from '~/navigators/navigator';
+import useBts from '~/hooks/useBottomSheet';
+import BottomSheet from '~/components/BottomSheet/BottomModal';
+import FeedTimer from '../FeedTimer/FeedTimer';
 
 const RenderItem = ({item}) => {
   return (
@@ -19,11 +21,11 @@ const RenderItem = ({item}) => {
           <TextCustom type="fs-16 fw-semi">:</TextCustom>
           <TextCustom type="fs-16 fw-semi">{item.minute}</TextCustom>
         </ViewCustom>
-        <TextCustom type="fs-14 fw-normal">{item.repeat}</TextCustom>
+        <TextCustom type="fs-12">{item.repeat}</TextCustom>
         <ViewCustom layout="fd-r">
-          <TextCustom type="fs-14 fw-normal">Feed: </TextCustom>
-          <TextCustom type="fs-14 fw-normal">{item.feed}</TextCustom>
-          <TextCustom type="fs-14 fw-normal"> portions</TextCustom>
+          <TextCustom type="fs-12">Feed: </TextCustom>
+          <TextCustom type="fs-12">{item.feed}</TextCustom>
+          <TextCustom type="fs-12"> portions</TextCustom>
         </ViewCustom>
       </ViewCustom>
 
@@ -35,10 +37,11 @@ const RenderItem = ({item}) => {
 };
 
 const Device = ({navigation}) => {
+  const {presentBts, BottomSheet: Sheet} = useBts(BottomSheet);
   return (
     <View>
       <Button onPress={() => navigate('DeviceSettings')} title="Settings" />
-      <Button onPress={() => navigate('DeviceRecord')} title="Record" />
+      <Button onPress={() => navigate('PetRecord')} title="Record" />
       <ViewCustom layout="p-5 mt-15">
         <Grid
           data={timers}
@@ -55,9 +58,12 @@ const Device = ({navigation}) => {
           iconLeft="plus"
           content="Add Timer"
           layout="mt-15"
-          onPress={() => navigation.navigate('FeedTimer')}
+          onPress={() => presentBts()}
         />
       </ViewCustom>
+      <Sheet>
+        <FeedTimer />
+      </Sheet>
     </View>
   );
 };

@@ -16,4 +16,6 @@ export const IMAGES = {
   petCleanerSmall: require(`${baseUrl}/petCleanerSmall.png`),
   petFeederSmall: require(`${baseUrl}/petFeederSmall.png`),
   petDispenserSmall: require(`${baseUrl}/petDispenserSmall.png`),
+  qrCode: require(`${baseUrl}/qrCode.png`),
+  dog: require(`${baseUrl}/dog.png`),
 };

@@ -3,7 +3,13 @@ import {StyleSheet} from 'react-native';
 import {TextInput} from 'react-native';
 
 const InputCustom = ({placeHolder}: any) => {
-  return <TextInput style={styles.inputStyle} placeholder={placeHolder} />;
+  return (
+    <TextInput
+      style={styles.inputStyle}
+      placeholder={placeHolder}
+      placeholderTextColor="#D3D3D3"
+    />
+  );
 };
 
 const styles = StyleSheet.create({
@@ -13,6 +19,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderBottomColor: '#181B20',
     fontSize: 18,
+    color: 'black',
   },
 });
 

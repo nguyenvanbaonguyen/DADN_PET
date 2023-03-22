@@ -17,7 +17,9 @@ const RadioInput = ({name, user, setUser}) => {
             styleChoose = {...styleChoose, backgroundColor: 'white'};
 
           return (
-            <Pressable onPress={() => setUser(pre => ({...pre, [name]: item}))}>
+            <Pressable
+              onPress={() => setUser(pre => ({...pre, [name]: item}))}
+              key={item}>
               <ViewCustom layout="fd-r mr-30" key={item}>
                 <ViewCustom
                   layout="w-20 h-20 br-20 bg-blue ai-c jc-c mr-10"

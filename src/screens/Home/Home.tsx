@@ -1,25 +1,30 @@
 import React from 'react';
-import {Pressable, ScrollView} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
+import ButtonMulti from '~/components/ButtonCustom/ButtonMulti';
+import Chart from '~/components/Chart/Chart';
 import TextCustom from '~/components/TextCustom/TextCustom';
 import ViewCustom from '~/components/ViewCustom/ViewCustom';
-import General from '../Stat/General';
-import ConnectDevice from './components/ConnectDevice';
-import MonitorDevice from './components/MonitorDevice';
+import ConnectDevice from '../Pet/components/ConnectDevice';
+import Stat from '../Stat/Stat';
+import IntroduceDog from './components/IntroduceDog';
+import ListDog from './components/ListDog';
 
-const Home = ({navigation}) => {
+const Home = () => {
+  const data = ['Gâu Gâu', 'Mỹ diệu'];
   return (
-    <ViewCustom layout="f-1 px-15 ">
+    <ViewCustom layout="f-1 px-15">
       <ScrollView showsVerticalScrollIndicator={false}>
-        <ConnectDevice />
-        <MonitorDevice />
+        <IntroduceDog />
+        <ListDog />
 
-        <ViewCustom layout="mt-15 pb-30">
-          <TextCustom type="fs-20 fw-bold">Thống kê</TextCustom>
-          <Pressable onPress={() => navigation.navigate('Stat')}>
-            <ViewCustom layout="px-5 py-20">
-              <General />
+        <ViewCustom layout="py-15 m-2 px-3 mt-15 bg-w br-6" shadow>
+          <TextCustom type="fs-18 fw-bold">Cleaning Report</TextCustom>
+          <ViewCustom layout="mt-15">
+            <ButtonMulti data={data} />
+            <ViewCustom layout="mt-15" style={{marginLeft: -15}}>
+              <Chart />
             </ViewCustom>
-          </Pressable>
+          </ViewCustom>
         </ViewCustom>
       </ScrollView>
     </ViewCustom>

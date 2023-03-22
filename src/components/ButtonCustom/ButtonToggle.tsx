@@ -20,7 +20,7 @@ const ButtonToggle = ({onPress = async () => {}, active = true}) => {
     await onPress();
     Animated.timing(wSub, {
       toValue: isActive ? 0 : 45,
-      duration: 200,
+      duration: 100,
       useNativeDriver: false,
     }).start();
     setIsActive(pre => !pre);
@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     height: BAR_HEIGHT,
     backgroundColor: '#BAC7D5',
     borderRadius: BAR_RADIUS,
+    marginRight: (BIG_BALL_RADIUS - SMALL_BALL_RADIUS) / 2,
   },
   containerSub: {
     height: BAR_HEIGHT,

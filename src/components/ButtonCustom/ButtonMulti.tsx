@@ -3,8 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const ButtonMini = ({content, index, lengthData, active, onPress}: any) => {
-  let style: any =
-    index === 0 || index === lengthData - 1 ? {} : styles.buttonCenter;
+  let style: any = index === lengthData - 1 ? styles.buttonEnd : {};
   if (active) style = {...style, backgroundColor: '#008FF833'};
 
   const handlePress = () => {
@@ -21,9 +20,8 @@ const ButtonMini = ({content, index, lengthData, active, onPress}: any) => {
   );
 };
 
-const ButtonMulti = () => {
+const ButtonMulti = ({data}) => {
   const [id, setId] = useState(0);
-  const data = ['Day', 'Week', 'Month'];
   const length = data.length;
 
   return (
@@ -57,11 +55,11 @@ const styles = StyleSheet.create({
     height: 25,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  buttonCenter: {
-    borderLeftWidth: 1,
     borderRightWidth: 1,
     borderColor: '##008FF8',
+  },
+  buttonEnd: {
+    borderRightWidth: 0,
   },
   buttonBlue: {
     backgroundColor: '#008FF833',
