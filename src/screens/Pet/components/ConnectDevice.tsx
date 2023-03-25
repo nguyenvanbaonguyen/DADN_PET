@@ -7,9 +7,16 @@ import {navigate} from '~/navigators/globalNav';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {devices} from '../dataInHome';
 import Grid from '~/components/Grid/Grid';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 const renderItem = ({item}) => (
-  <TouchableOpacity activeOpacity={0.75} onPress={() => navigate('Device')}>
+  <TouchableOpacity
+    activeOpacity={0.75}
+    onPress={() => {
+      navigate('Device', {
+        index: item.index,
+      });
+    }}>
     <ViewCustom layout="ai-c">
       <ImageCustom height={64} width={64} name={item.image} />
       <ViewCustom layout="bg-cloudl w-f h-28 ai-c jc-c mt-4" round>
@@ -20,10 +27,26 @@ const renderItem = ({item}) => (
 );
 
 const ConnectDevice = () => {
+  const route = useRoute();
+  const navigation = useNavigation();
   return (
     <>
       <ViewCustom layout="fd-r jc-b my-15 ai-c">
-        <TextCustom type="fs-20 fw-bold">Mỹ Diệu!</TextCustom>
+        <ViewCustom layout="fd-r">
+          <TextCustom type="fs-20 fw-bold">{route.params.name}</TextCustom>
+          <TouchableOpacity
+            activeOpacity={0.75}
+            onPress={() => {
+              navigation.navigate('PetInfo', {
+                index: route.params.index,
+              });
+            }}>
+            <ViewCustom layout="h-30 w-30 bg-cloudl jc-c ai-c ml-10 br-90">
+              <Icon color={'#252A31'} size={20} name="info" />
+            </ViewCustom>
+          </TouchableOpacity>
+        </ViewCustom>
+
         <TouchableOpacity
           activeOpacity={0.75}
           onPress={() => navigate('AddDevice')}>

@@ -9,6 +9,8 @@ import HistoryUser from '~/screens/HistoryUser/HistoryUser';
 import Home from '~/screens/Home/Home';
 import Pet from '~/screens/Pet/Pet';
 import Stat from '~/screens/Stat/Stat';
+import PetInfo from '~/screens/PetInfo/PetInfo';
+import AddPet from '~/screens/AddPet/AddPet';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +29,8 @@ const HomeNav = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen name="Pet" component={Pet} />
+      <Stack.Screen name="PetInfo" component={PetInfo} />
+      <Stack.Screen name="AddPet" component={AddPet} />
       <Stack.Screen name="AddDevice" component={AddDevice} />
       <Stack.Screen name="Device" component={Device} />
       <Stack.Screen name="DeviceRecord" component={DeviceRecord} />

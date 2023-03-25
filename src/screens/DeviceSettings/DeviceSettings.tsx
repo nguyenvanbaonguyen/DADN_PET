@@ -1,3 +1,4 @@
+import { useRoute } from '@react-navigation/native';
 import React from 'react';
 import {Text} from 'react-native';
 import Grid from '~/components/Grid/Grid';
@@ -61,11 +62,13 @@ const RenderItem = ({item}) => {
 };
 
 const DeviceSettings = () => {
+  const route = useRoute();
+  const index = route.params.index - 1;
   return (
     <>
       <ViewCustom layout="p-5 mt-15">
         <Grid
-          data={devices}
+          data={devices.slice(index, index + 1)}
           RenderItem={RenderItem}
           numColumns={1}
           gapX={0}

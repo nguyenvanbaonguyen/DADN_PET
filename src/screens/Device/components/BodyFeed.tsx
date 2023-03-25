@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
-import {timers} from '../Pet/dataInHome';
+import {timers} from '../../Pet/dataInHome';
 import Grid from '~/components/Grid/Grid';
 import TextCustom from '~/components/TextCustom/TextCustom';
 import ViewCustom from '~/components/ViewCustom/ViewCustom';
@@ -8,10 +8,8 @@ import ButtonToggle from '~/components/ButtonCustom/ButtonToggle';
 import ButtonCustom from '~/components/ButtonCustom/ButtonCustom';
 import useBts from '~/hooks/useBottomSheet';
 import BottomSheet from '~/components/BottomSheet/BottomModal';
-import FeedTimer from '../FeedTimer/FeedTimer';
-import Immediate from './components/Immediate';
+import FeedTimer from '../../FeedTimer/FeedTimer';
 import { useRoute } from '@react-navigation/native';
-import Body from './components/Body';
 
 const RenderItem = ({item}) => {
   return (
@@ -37,14 +35,34 @@ const RenderItem = ({item}) => {
   );
 };
 
-const Device = ({navigation}) => {
+const BodyFeed = () => {
   const {presentBts, BottomSheet: Sheet} = useBts(BottomSheet);
   return (
     <View>
-      <Immediate />
-      <Body />
+      <ViewCustom layout="p-5">
+        <Grid
+          data={timers}
+          RenderItem={RenderItem}
+          numColumns={1}
+          gapX={20}
+          gapY={20}
+        />
+      </ViewCustom>
+
+      <ViewCustom layout="mx-5 p-15 ai-e">
+        <ButtonCustom
+          size="xs"
+          iconLeft="plus"
+          content="Add Timer"
+          layout="mt-15"
+          onPress={() => presentBts()}
+        />
+      </ViewCustom>
+      <Sheet>
+        <FeedTimer />
+      </Sheet>
     </View>
   );
 };
 
-export default Device;
+export default BodyFeed;

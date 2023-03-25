@@ -1,3 +1,4 @@
+import {useRoute} from '@react-navigation/native';
 import React from 'react';
 import {Pressable, ScrollView} from 'react-native';
 import TextCustom from '~/components/TextCustom/TextCustom';

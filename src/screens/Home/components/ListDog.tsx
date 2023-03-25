@@ -7,15 +7,24 @@ import TextCustom from '~/components/TextCustom/TextCustom';
 import ViewCustom from '~/components/ViewCustom/ViewCustom';
 import {resetNavigate} from '~/navigators/globalNav';
 
-const data = [{name: 'Gâu Gâu'}, {name: 'Mỹ Diệu'}];
+const data = [
+  {index: 1, name: 'Gâu Gâu', image: 'dog'},
+  {index: 2, name: 'Mỹ Diệu', image: 'cat'},
+];
 
 const Dog = ({item}) => {
   const navigation = useNavigation();
   return (
     <ViewCustom layout="p-10 mx-2 fd-r jc-b ai-c bg-w mt-10" shadow round>
-      <Pressable onPress={() => navigation.navigate('Pet')}>
+      <Pressable
+        onPress={() => {
+          navigation.navigate('Pet', {
+            index: item.index,
+            name: item.name,
+          });
+        }}>
         <ViewCustom layout="fd-r ai-c">
-          <ImageCustom name="dog" width={70} height={70} />
+          <ImageCustom name={item.image} width={70} height={70} />
           <ViewCustom layout="ai-c ml-10">
             <TextCustom type="ai-c">{item.name}</TextCustom>
           </ViewCustom>

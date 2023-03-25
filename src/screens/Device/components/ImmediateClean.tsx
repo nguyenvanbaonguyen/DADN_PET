@@ -1,4 +1,4 @@
-import { useRoute } from '@react-navigation/native';
+import {useRoute} from '@react-navigation/native';
 import React from 'react';
 import {Pressable, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -7,9 +7,8 @@ import TextCustom from '~/components/TextCustom/TextCustom';
 import ViewCustom from '~/components/ViewCustom/ViewCustom';
 import useModal from '~/hooks/useModal';
 import {navigate} from '~/navigators/globalNav';
-import FeedPortion from './FeedPortion';
 
-const ImmediateFeed = () => {
+const ImmediateClean = () => {
   const {openModal, Modal} = useModal();
   const route = useRoute();
   return (
@@ -29,10 +28,10 @@ const ImmediateFeed = () => {
 
         <Pressable onPress={openModal}>
           <ViewCustom layout="ai-c br-180 bg-cloudl h-120 w-120 p-15">
-            <Icon color={'#005AA3'} size={40} name="home" />
+            <Icon color={'#005AA3'} size={40} name="android" />
             <ViewCustom layout="mt-8">
               <TextCustom type="ai-c cl-blue fw-semi align-c">
-                Immediately Feed
+                Immediately Clean
               </TextCustom>
             </ViewCustom>
           </ViewCustom>
@@ -52,11 +51,9 @@ const ImmediateFeed = () => {
           <TextCustom type="fs-14 fw-semi">Manual Feed</TextCustom>
           <ViewCustom layout="mt-5">
             <TextCustom type="fs-13 lh-20">
-              Chọn khẩu phần ăn cho thú cưng
+              Tự động dọn vệ sinh ngay lập tức
             </TextCustom>
           </ViewCustom>
-
-          <FeedPortion />
 
           <ViewCustom layout="fd-r mt-15">
             <ButtonCustom size="xs" content="Save" full />
@@ -73,4 +70,4 @@ const ImmediateFeed = () => {
     </>
   );
 };
-export default ImmediateFeed;
+export default ImmediateClean;
