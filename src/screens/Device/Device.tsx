@@ -1,8 +1,6 @@
 import React from 'react';
-import {Button, View} from 'react-native';
-import {navigate} from '~/navigators/globalNav';
+import {View} from 'react-native';
 import {timers} from '../Pet/dataInHome';
-import Icon from 'react-native-vector-icons/AntDesign';
 import Grid from '~/components/Grid/Grid';
 import TextCustom from '~/components/TextCustom/TextCustom';
 import ViewCustom from '~/components/ViewCustom/ViewCustom';
@@ -11,6 +9,7 @@ import ButtonCustom from '~/components/ButtonCustom/ButtonCustom';
 import useBts from '~/hooks/useBottomSheet';
 import BottomSheet from '~/components/BottomSheet/BottomModal';
 import FeedTimer from '../FeedTimer/FeedTimer';
+import ImmediateFeed from './components/ImmediateFeed';
 
 const RenderItem = ({item}) => {
   return (
@@ -40,9 +39,9 @@ const Device = ({navigation}) => {
   const {presentBts, BottomSheet: Sheet} = useBts(BottomSheet);
   return (
     <View>
-      <Button onPress={() => navigate('DeviceSettings')} title="Settings" />
-      <Button onPress={() => navigate('PetRecord')} title="Record" />
-      <ViewCustom layout="p-5 mt-15">
+      <ImmediateFeed />
+
+      <ViewCustom layout="p-5">
         <Grid
           data={timers}
           RenderItem={RenderItem}
@@ -52,7 +51,7 @@ const Device = ({navigation}) => {
         />
       </ViewCustom>
 
-      <ViewCustom layout="mx-5 p-15">
+      <ViewCustom layout="mx-5 p-15 ai-e">
         <ButtonCustom
           size="xs"
           iconLeft="plus"
