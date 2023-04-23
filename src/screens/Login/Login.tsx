@@ -80,11 +80,6 @@ const Login = ({navigation, route}: NavigatorProps) => {
                       keyboardType="email-address"
                       name="email"
                     />
-                    {errors.email && touched.email && (
-                      <TextCustom type="fs-10 cl-red">
-                        {errors.email}
-                      </TextCustom>
-                    )}
                   </ViewCustom>
 
                   <ViewCustom>

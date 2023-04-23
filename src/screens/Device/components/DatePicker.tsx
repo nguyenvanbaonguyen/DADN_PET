@@ -6,21 +6,34 @@ import Grid from '~/components/Grid/Grid';
 import TextCustom from '~/components/TextCustom/TextCustom';
 import ViewCustom from '~/components/ViewCustom/ViewCustom';
 import useModal from '~/hooks/useModal';
+import FeedPortion from './FeedPortionBts';
 
 const dataRaw = [
-  {content: 'Mon', isActive: false},
-  {content: 'Tue', isActive: false},
-  {content: 'Wed', isActive: false},
-  {content: 'Thu', isActive: false},
-  {content: 'Fri', isActive: false},
-  {content: 'Sat', isActive: false},
-  {content: 'Sun', isActive: false},
+  {content: 'Mon', isActive: false, val: 1},
+  {content: 'Tue', isActive: false, val: 2},
+  {content: 'Wed', isActive: false, val: 3},
+  {content: 'Thu', isActive: false, val: 4},
+  {content: 'Fri', isActive: false, val: 5},
+  {content: 'Sat', isActive: false, val: 6},
+  {content: 'Sun', isActive: false, val: 0},
 ];
 
-const DatePicker = () => {
+function dateToRepeat(date) {
+  const res = date.filter(ele => ele.isActive).map(ele => ele.content);
+  if (res.length === 7) {
+    return 'Everyday';
+  } else if (res.length === 0) {
+    return 'Today - Sun, Apr 23';
+  }
+  return 'Every ' + res.join(', ');
+}
+
+const DatePicker = ({hour, min, closeModal}) => {
   const {openModal, Modal} = useModal();
   const datesRef = useRef({});
   const [data, setData] = useState(dataRaw);
+
+  const times = `${hour}:${min}`;
 
   const RenderItem = useCallback(
     ({item, index}: any) => {
@@ -48,7 +61,7 @@ const DatePicker = () => {
   return (
     <>
       <ViewCustom layout="fd-r jc-b ai-c">
-        <TextCustom type="fw-semi fs-16">Today - Web, Mar 1</TextCustom>
+        <TextCustom type="fw-semi fs-16">{dateToRepeat(data)}</TextCustom>
         <Icon name="calendar" size={25} onPress={openModal} color={'black'} />
       </ViewCustom>
 
@@ -59,6 +72,13 @@ const DatePicker = () => {
       <Modal>
         <CalendarCustom datesRef={datesRef} />
       </Modal>
+
+      <FeedPortion
+        times={times}
+        closeModal={closeModal}
+        weekday={data.filter(ele => ele.isActive).map(ele => ele.val)}
+        type={data === dataRaw ? 'once' : 'again'}
+      />
     </>
   );
 };

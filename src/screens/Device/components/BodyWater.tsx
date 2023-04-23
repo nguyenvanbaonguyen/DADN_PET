@@ -1,21 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {View} from 'react-native';
-import {timers} from '../../Pet/dataInHome';
 import Grid from '~/components/Grid/Grid';
 import TextCustom from '~/components/TextCustom/TextCustom';
 import ViewCustom from '~/components/ViewCustom/ViewCustom';
 import ButtonToggle from '~/components/ButtonCustom/ButtonToggle';
 import ButtonCustom from '~/components/ButtonCustom/ButtonCustom';
-// import useBts from '~/hooks/useBottomSheet';
-// import BottomSheet from '~/components/BottomSheet/BottomModal';
 import useModal from '~/hooks/useModal';
-// import FeedTimer from '../../FeedTimer/FeedTimer';
 import StartTime from './StartTime';
 import {useRoute} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {getSchedules} from '~/redux/schedule/schedule';
-
-// const dataVal = [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ];
 
 function formatHour(time) {
   let [hour, min] = time.split(':');
@@ -27,16 +21,6 @@ function formatHour(time) {
   }
   return [hour, min].join(':');
 }
-
-// function dateToRepeat(date) {
-//   const res = date.map(ele => dataVal[ele]);
-//   if (res.length === 7) {
-//     return 'Everyday';
-//   } else if (res.length === 0) {
-//     return 'Today - Sun, Apr 23';
-//   }
-//   return 'Every ' + res.join(', ');
-// }
 
 function normalizeItem(item) {
   let result = {};
@@ -77,7 +61,7 @@ const RenderItem = ({item}) => {
   );
 };
 
-const BodyFeed = () => {
+const BodyWater = () => {
   const route = useRoute();
   const index = route?.params?.index;
   const dispatch = useDispatch();
@@ -130,4 +114,4 @@ const BodyFeed = () => {
   );
 };
 
-export default BodyFeed;
+export default BodyWater;

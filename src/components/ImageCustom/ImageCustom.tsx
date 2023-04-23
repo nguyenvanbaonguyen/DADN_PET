@@ -7,8 +7,7 @@ const ImageCustom = ({width, height, name}: ImageCustomProps) => {
     width,
     height,
   };
-
-  return <Image source={IMAGES[name]} style={imageStyle}  />;
+  return <Image source={IMAGES[name]} style={imageStyle} />;
 };
 
 export default ImageCustom;

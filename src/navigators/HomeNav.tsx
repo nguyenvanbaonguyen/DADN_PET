@@ -4,7 +4,7 @@ import AddDevice from '~/screens/AddDevice/AddDevice';
 import Device from '~/screens/Device/Device';
 import DeviceRecord from '~/screens/DeviceRecord/DeviceRecord';
 import DeviceSettings from '~/screens/DeviceSettings/DeviceSettings';
-import FeedTimer from '~/screens/FeedTimer/FeedTimer';
+// import FeedTimer from '~/screens/FeedTimer/FeedTimer';
 import HistoryUser from '~/screens/HistoryUser/HistoryUser';
 import Home from '~/screens/Home/Home';
 import Pet from '~/screens/Pet/Pet';
@@ -35,7 +35,7 @@ const HomeNav = () => {
       <Stack.Screen name="Device" component={Device} />
       <Stack.Screen name="DeviceRecord" component={DeviceRecord} />
       <Stack.Screen name="DeviceSettings" component={DeviceSettings} />
-      <Stack.Screen name="FeedTimer" component={FeedTimer} />
+      {/* <Stack.Screen name="FeedTimer" component={FeedTimer} /> */}
       <Stack.Screen name="PetRecord" component={HistoryUser} />
       <Stack.Screen
         name="Stat"

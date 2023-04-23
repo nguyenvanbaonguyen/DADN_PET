@@ -1,24 +1,33 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 import ImageCustom from '~/components/ImageCustom/ImageCustom';
 import TextCustom from '~/components/TextCustom/TextCustom';
 import ViewCustom from '~/components/ViewCustom/ViewCustom';
 import {navigate} from '~/navigators/globalNav';
 import Icon from 'react-native-vector-icons/AntDesign';
-import {devices} from '../dataInHome';
 import Grid from '~/components/Grid/Grid';
 import {useNavigation, useRoute} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
+import {getListDevices} from '~/redux/listDevice/listDevice';
+
+const data = {
+  'Pet Cleaner C3': 'petCleanerBig',
+  'Pet Feeder M1': 'petFeederBig',
+  'Dispenser F3': 'petDispenserBig',
+};
 
 const renderItem = ({item}) => (
   <TouchableOpacity
     activeOpacity={0.75}
     onPress={() => {
       navigate('Device', {
-        index: item.index,
+        index: item._id,
+        name: item.name,
+        type: item.type,
       });
     }}>
     <ViewCustom layout="ai-c">
-      <ImageCustom height={64} width={64} name={item.image} />
+      <ImageCustom height={64} width={64} name={data[item.name]} />
       <ViewCustom layout="bg-cloudl w-f h-28 ai-c jc-c mt-4" round>
         <TextCustom type="fs-12 fw-semi">{item.name}</TextCustom>
       </ViewCustom>
@@ -28,17 +37,36 @@ const renderItem = ({item}) => (
 
 const ConnectDevice = () => {
   const route = useRoute();
+  const index = route?.params?.index;
   const navigation = useNavigation();
+
+  const dispatch = useDispatch();
+  const [listDevice, setListDevice] = useState([]);
+
+  useEffect(() => {
+    const callSetListDevice = async () => {
+      try {
+        const res = await dispatch(getListDevices(index));
+        const newListDevice = res?.data?.data;
+        console.log('result ', newListDevice);
+        setListDevice(newListDevice);
+      } catch (error) {
+        console.log('errors ', error);
+      }
+    };
+    callSetListDevice();
+  }, []);
+
   return (
     <>
       <ViewCustom layout="fd-r jc-b my-15 ai-c">
         <ViewCustom layout="fd-r">
-          <TextCustom type="fs-20 fw-bold">{route.params.name}</TextCustom>
+          <TextCustom type="fs-20 fw-bold">{route?.params?.name}</TextCustom>
           <TouchableOpacity
             activeOpacity={0.75}
             onPress={() => {
               navigation.navigate('PetInfo', {
-                index: route.params.index,
+                index: route?.params?.index,
               });
             }}>
             <ViewCustom layout="h-30 w-30 bg-cloudl jc-c ai-c ml-10 br-90">
@@ -49,7 +77,12 @@ const ConnectDevice = () => {
 
         <TouchableOpacity
           activeOpacity={0.75}
-          onPress={() => navigate('AddDevice')}>
+          onPress={() => {
+            navigation.navigate('AddDevice', {
+              index: route?.params?.index,
+              name: route?.params?.name,
+            });
+          }}>
           <ViewCustom layout="h-30 w-30 bg-primary jc-c ai-c" round>
             <Icon color={'#252A31'} size={20} name="plus" />
           </ViewCustom>
@@ -66,7 +99,7 @@ const ConnectDevice = () => {
 
           <ViewCustom layout="mt-15" round>
             <Grid
-              data={devices}
+              data={listDevice}
               RenderItem={renderItem}
               numColumns={3}
               gapX={15}

@@ -2,15 +2,34 @@ import {useRoute} from '@react-navigation/native';
 import React from 'react';
 import {Pressable, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
+import {useDispatch} from 'react-redux';
 import ButtonCustom from '~/components/ButtonCustom/ButtonCustom';
 import TextCustom from '~/components/TextCustom/TextCustom';
 import ViewCustom from '~/components/ViewCustom/ViewCustom';
 import useModal from '~/hooks/useModal';
 import {navigate} from '~/navigators/globalNav';
+import {sendFood} from '~/redux/device/device';
 
 const ImmediateClean = () => {
-  const {openModal, Modal} = useModal();
+  const {openModal, closeModal, Modal} = useModal();
+  const dispatch = useDispatch();
   const route = useRoute();
+  const index = route?.params?.index;
+
+  const onSubmit = async () => {
+    const callSendSignal = async () => {
+      const amount = 1;
+      await dispatch(sendFood(index, {amount}));
+
+      console.log('Tom n Jerry');
+      closeModal();
+    };
+    try {
+      await callSendSignal();
+    } catch (error) {
+      console.log('error send clean ', error);
+    }
+  };
   return (
     <>
       <ViewCustom layout="mx-5 p-15 fd-r jc-b ai-c">
@@ -39,7 +58,11 @@ const ImmediateClean = () => {
 
         <TouchableOpacity
           activeOpacity={0.9}
-          onPress={() => navigate('DeviceRecord')}>
+          onPress={() =>
+            navigate('DeviceRecord', {
+              index: route.params.index,
+            })
+          }>
           <ViewCustom layout="h-40 w-40 bg-primary jc-c ai-c br-80">
             <Icon color={'#005AA3'} size={25} name="reload1" />
           </ViewCustom>
@@ -56,13 +79,14 @@ const ImmediateClean = () => {
           </ViewCustom>
 
           <ViewCustom layout="fd-r mt-15">
-            <ButtonCustom size="xs" content="Save" full />
+            <ButtonCustom size="xs" content="Save" full onPress={onSubmit} />
             <ButtonCustom
               size="xs"
               content="Cancel"
               outline
               full
               layout="ml-10"
+              onPress={closeModal}
             />
           </ViewCustom>
         </ViewCustom>

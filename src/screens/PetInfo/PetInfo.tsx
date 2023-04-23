@@ -1,63 +1,64 @@
-import { useRoute } from '@react-navigation/native';
-import React, {useState} from 'react';
-import {StyleSheet} from 'react-native';
-import {TextInput} from 'react-native';
-import ButtonCustom from '~/components/ButtonCustom/ButtonCustom';
-import TextCustom from '~/components/TextCustom/TextCustom';
+import {useRoute} from '@react-navigation/native';
+import React, {useEffect, useState} from 'react';
+import {useDispatch} from 'react-redux';
 import ViewCustom from '~/components/ViewCustom/ViewCustom';
-import RadioInput from './components/RadioInput';
+import {getPet} from '~/redux/pet/pet';
+// import RadioInput from './components/RadioInput';
 import TextInputCustom from './components/TextInput';
 
-const pets = [
-  {
-    name: 'Gâu Gâu',
-    gender: 'Đực',
-    age: '7 tuần',
-    weight: '1.3 kg',
-    type: 'Shiba Inu',
-  },
-  {
-    name: 'Mỹ Diệu',
-    gender: 'Cái',
-    age: '8 tháng',
-    weight: '1.12 kg',
-    type: 'Mèo Lủng Tường',
-  },
-];
+const petInfo = {
+  index: '',
+  name: 'Gau Gau',
+  gender: 'Đực',
+  age: '7 tuần',
+  weight: '1.3 kg',
+  type: 'Shiba Inu',
+};
 
 const PetInfo = () => {
   const route = useRoute();
-  const index = route.params.index - 1;
-  const [user, setUser] = useState(pets[index]);
+  const index = route.params.index;
+  const dispatch = useDispatch();
+  const [pet, setPet] = useState(petInfo);
+  useEffect(() => {
+    const callPet = async id => {
+      try {
+        const res = await dispatch(getPet(id));
+        console.log('petinfo ', res?.data?.data);
+        setPet(res?.data?.data);
+      } catch (error) {
+        console.log('errors ', error);
+        // Object.entries(error).forEach(([key, value]) =>
+        //   console.log('errors ', key, value),
+        // );
+      }
+    };
+    callPet(index);
+  }, [index, dispatch]);
   return (
     <ViewCustom layout="px-15 mt-15">
       <TextInputCustom
         content="Tên thú cưng"
         name="name"
-        setUser={setUser}
-        user={user}
+        setUser={setPet}
+        user={pet}
       />
 
-      <RadioInput name="gender" user={user} setUser={setUser} />
+      {/* <RadioInput name="gender" user={user} setUser={setUser} /> */}
 
-      <TextInputCustom
-        content="Tuổi"
-        name="age"
-        setUser={setUser}
-        user={user}
-      />
+      {/* <TextInputCustom content="Tuổi" name="age" setUser={setPet} user={pet} /> */}
 
-      <TextInputCustom
+      {/* <TextInputCustom
         content="Cân nặng"
         name="weight"
-        setUser={setUser}
-        user={user}
-      />
+        setUser={setPet}
+        user={pet}
+      /> */}
       <TextInputCustom
         content="Giống loài"
         name="type"
-        setUser={setUser}
-        user={user}
+        setUser={setPet}
+        user={pet}
       />
     </ViewCustom>
   );

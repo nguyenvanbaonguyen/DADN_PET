@@ -4,13 +4,13 @@ import Icon from 'react-native-vector-icons/Feather';
 import TextCustom from '~/components/TextCustom/TextCustom';
 import ViewCustom from '~/components/ViewCustom/ViewCustom';
 
-const HistoryOnetime = () => {
+const HistoryOnetime = ({device, time, action}) => {
   return (
     <ViewCustom layout="mt-15">
-      <TextCustom type="fw-semi fs-14">08:00</TextCustom>
+      <TextCustom type="fw-semi fs-14">{time}</TextCustom>
       <ViewCustom layout="mt-8" style={styles.relative}>
-        <TextCustom type="fs-13 cl-gray">Pet Feeder M1</TextCustom>
-        <TextCustom type="fs-13 cl-gray">Timed Feeder: 3 portions</TextCustom>
+        <TextCustom type="fs-13 cl-gray">{device}</TextCustom>
+        <TextCustom type="fs-13 cl-gray">{action}</TextCustom>
         <Icon name="trash" size={20} style={styles.iconStyle} color={'black'} />
       </ViewCustom>
     </ViewCustom>

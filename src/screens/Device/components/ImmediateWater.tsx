@@ -1,5 +1,4 @@
 import {useRoute} from '@react-navigation/native';
-import {Formik} from 'formik';
 import React from 'react';
 import {Pressable, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -9,31 +8,12 @@ import TextCustom from '~/components/TextCustom/TextCustom';
 import ViewCustom from '~/components/ViewCustom/ViewCustom';
 import useModal from '~/hooks/useModal';
 import {navigate} from '~/navigators/globalNav';
+import {sendFood} from '~/redux/device/device';
 import FeedPortion from './FeedPortion';
 
-const ImmediateFeed = () => {
+const ImmediateWater = () => {
+  const {openModal, closeModal, Modal} = useModal();
   const route = useRoute();
-  const dispatch = useDispatch();
-  const {Modal, openModal, closeModal} = useModal();
-  // const index = route?.params?.index;
-
-  // const dispatch = useDispatch();
-  // const onSubmit = async (data) => {
-  //   const sendFood = async () => {
-  //     const {portions} = data;
-  //     console.log('values ', data);
-  //     await dispatch(sendFood(index, {portions}));
-
-  //     console.log('Tom n Jerry');
-  //     closeModal();
-  //   };
-  //   try {
-  //     await sendFood();
-  //   } catch (error) {
-  //     console.log('error send food ', error);
-  //   }
-  // };
-
   return (
     <>
       <ViewCustom layout="mx-5 p-15 fd-r jc-b ai-c">
@@ -51,10 +31,10 @@ const ImmediateFeed = () => {
 
         <Pressable onPress={openModal}>
           <ViewCustom layout="ai-c br-180 bg-cloudl h-120 w-120 p-15">
-            <Icon color={'#005AA3'} size={40} name="home" />
+            <Icon color={'#005AA3'} size={40} name="android" />
             <ViewCustom layout="mt-8">
               <TextCustom type="ai-c cl-blue fw-semi align-c">
-                Immediately Feed
+                Immediately Water
               </TextCustom>
             </ViewCustom>
           </ViewCustom>
@@ -73,12 +53,12 @@ const ImmediateFeed = () => {
         </TouchableOpacity>
       </ViewCustom>
 
-      <Modal layout="">
+      <Modal layout=''>
         <ViewCustom layout="w-380 p-20">
-          <TextCustom type="fs-14 fw-semi">Manual Feed</TextCustom>
+          <TextCustom type="fs-14 fw-semi">Manual Water</TextCustom>
           <ViewCustom layout="mt-5">
             <TextCustom type="fs-13 lh-20">
-              Chọn khẩu phần ăn cho thú cưng
+              Chọn lượng nước uống cho thú cưng của bạn
             </TextCustom>
           </ViewCustom>
 
@@ -88,4 +68,4 @@ const ImmediateFeed = () => {
     </>
   );
 };
-export default ImmediateFeed;
+export default ImmediateWater;
