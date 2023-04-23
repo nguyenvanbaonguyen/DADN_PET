@@ -12,8 +12,17 @@ import {getListDevices} from '~/redux/listDevice/listDevice';
 
 const data = {
   'Pet Cleaner C3': 'petCleanerBig',
+  'Pet Cleaner C4': 'petCleanerBig',
+  'Pet Cleaner C5': 'petCleanerBig',
   'Pet Feeder M1': 'petFeederBig',
-  'Dispenser F3': 'petDispenserBig',
+  'Dispenser F3': 'petFeederBig',
+  'Dispenser F4': 'petFeederBig',
+  'Dispenser F5': 'petFeederBig',
+  'Pet Feeder M2': 'petFeederBig',
+  'Pet Feeder M3': 'petFeederBig',
+  'Pet Water W2': 'petDispenserBig',
+  'Pet Water W3': 'petDispenserBig',
+  'Pet Water W4': 'petDispenserBig',
 };
 
 const renderItem = ({item}) => (

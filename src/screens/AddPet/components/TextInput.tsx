@@ -4,7 +4,7 @@ import {StyleSheet, TextInput} from 'react-native';
 import TextCustom from '~/components/TextCustom/TextCustom';
 import ViewCustom from '~/components/ViewCustom/ViewCustom';
 
-const TextInputCustom = ({name, content, setUser, user, readOnly}: any) => {
+const TextInputCustom = ({name, content, setUser, user, readOnly, ...props}: any) => {
   return (
     <ViewCustom layout="mt-15">
       <TextCustom type="fs-16 ">{content}</TextCustom>
@@ -12,6 +12,7 @@ const TextInputCustom = ({name, content, setUser, user, readOnly}: any) => {
         style={styles.inputStyle}
         placeholder={user[name]}
         placeholderTextColor="#697D95"
+        {...props}
       />
     </ViewCustom>
   );
